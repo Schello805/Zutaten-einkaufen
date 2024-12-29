@@ -1,0 +1,18 @@
+import Foundation
+
+/*
+ * TEMPLATE FÜR DIE KONFIGURATION
+ * 1. Kopieren Sie diese Datei nach "../Zutaten einkaufen/Config.swift"
+ * 2. Fügen Sie Ihre API-Schlüssel ein
+ * 3. Committen Sie NIEMALS die Config.swift mit echten Schlüsseln!
+ */
+
+enum Config {
+    // OpenAI Konfiguration
+    static let openAIKey = "YOUR_API_KEY_HERE"
+    static let openAIOrganization = "YOUR_ORGANIZATION_ID_HERE"
+    
+    // Andere Konfigurationswerte
+    static let maxTokens = 800
+    static let temperature = 0.3
+}

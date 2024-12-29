@@ -1,0 +1,9 @@
+# Xcode
+.DS_Store
+xcuserdata/
+
+# Swift Package Manager
+.build/
+
+# Config files with sensitive data
+Config.swift
