@@ -11,20 +11,32 @@ Diese Datenschutzerklärung erläutert, wie die "Zutaten Einkaufen" App mit Ihre
 ### 2.1 Kamerazugriff
 - Die App benötigt Zugriff auf die Kamera, um Rezepte zu scannen
 - Die Bilder werden nur temporär zur Texterkennung verwendet und nicht gespeichert
-- Es erfolgt keine Übertragung der Bilder an externe Server
+- Es erfolgt keine dauerhafte Speicherung der Bilder
 
-### 2.2 Lokale Datenspeicherung
+### 2.2 Texterkennung und -analyse
+- Für die Erkennung und Analyse von Rezepten nutzen wir die OpenAI API
+- Der gescannte Text wird temporär an OpenAI übermittelt
+- Die Übermittlung erfolgt verschlüsselt und anonymisiert
+- OpenAI speichert keine persönlichen Daten
+- Die Nutzung erfolgt gemäß den OpenAI Nutzungsbedingungen (https://openai.com/policies/terms-of-use)
+- OpenAI Datenschutzerklärung: https://openai.com/policies/privacy-policy
+
+### 2.3 Lokale Datenspeicherung
 - Ihre Einkaufsliste wird ausschließlich lokal auf Ihrem Gerät gespeichert
-- Es werden keine persönlichen Daten an externe Server übertragen
-- Die App funktioniert vollständig offline
+- Es werden keine Einkaufslisten oder Rezepte dauerhaft gespeichert
+- Die App funktioniert offline (außer für die Texterkennung)
 
 ## 3. Datenweitergabe
 
-Die App überträgt keine Daten an Dritte. Die einzige Ausnahme ist die optionale "Teilen"-Funktion, bei der Sie selbst aktiv entscheiden, mit wem Sie Ihre Einkaufsliste teilen möchten.
+Die App überträgt Daten nur in folgenden Fällen:
+1. Temporär an OpenAI zur Texterkennung (nur der gescannte Text, keine persönlichen Daten)
+2. Bei Nutzung der "Teilen"-Funktion, wenn Sie aktiv Ihre Liste teilen möchten
 
 ## 4. Datensicherheit
 
-Alle Daten werden ausschließlich lokal auf Ihrem Gerät gespeichert und sind durch die iOS-Systemsicherheit geschützt.
+- Alle lokalen Daten werden ausschließlich auf Ihrem Gerät gespeichert
+- Die Übertragung an OpenAI erfolgt SSL-verschlüsselt
+- Es werden keine persönlichen Daten mit der Texterkennung verknüpft
 
 ## 5. Ihre Rechte
 

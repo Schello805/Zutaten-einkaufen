@@ -21,13 +21,12 @@ class SubscriptionManager: ObservableObject {
         }
     }
     
-    private let initialFreeScans = 5
     private var updateListenerTask: Task<Void, Error>?
     
     init() {
         remainingFreeScans = UserDefaults.standard.integer(forKey: "RemainingFreeScans")
         if remainingFreeScans == 0 && !UserDefaults.standard.bool(forKey: "HasInitializedFreeScans") {
-            remainingFreeScans = initialFreeScans
+            remainingFreeScans = StoreConfig.Trial.freeScans
             UserDefaults.standard.set(true, forKey: "HasInitializedFreeScans")
         }
         
@@ -80,7 +79,7 @@ class SubscriptionManager: ObservableObject {
     }
     
     func purchase() async throws {
-        guard let product = try? await Product.products(for: ["biz.schellenberger.michael.Zutaten-einkaufen.subscription.4weeks"]).first else {
+        guard let product = try? await Product.products(for: [StoreConfig.Products.subscription4Weeks]).first else {
             throw SubscriptionError.productNotFound
         }
         
