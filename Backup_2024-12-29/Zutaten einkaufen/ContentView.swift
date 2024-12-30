@@ -12,10 +12,6 @@ struct ContentView: View {
     @State private var hasShownCameraHint = UserDefaults.standard.bool(forKey: "HasShownCameraHint")
     @State private var showSettings = false
     @State private var showDeleteAlert = false
-    @State private var showingAddItemSheet = false
-    @State private var newItemName = ""
-    @State private var newItemQuantity = ""
-    @State private var selectedCategory = Category.other
     
     var body: some View {
         NavigationView {
@@ -68,43 +64,18 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack {
-                        Button(action: {
-                            showingAddItemSheet = true
-                        }) {
-                            Image(systemName: "plus")
+                    Button(action: {
+                        if hasShownCameraHint {
+                            showingScanner = true
+                        } else {
+                            showingCameraHint = true
                         }
-                        
-                        Button(action: {
-                            if hasShownCameraHint {
-                                showingScanner = true
-                            } else {
-                                showingCameraHint = true
-                            }
-                        }) {
-                            Image(systemName: "doc.text.viewfinder")
-                                .font(.system(size: 20))
-                                .foregroundColor(.primary)
-                        }
-                        
-                        if !viewModel.items.isEmpty {
-                            Menu {
-                                Button(role: .destructive, action: {
-                                    showingClearConfirmation = true
-                                }) {
-                                    Label("Liste leeren", systemImage: "trash")
-                                }
-                                
-                                Button(action: {
-                                    showingShareSheet = true
-                                }) {
-                                    Label("Liste teilen", systemImage: "square.and.arrow.up")
-                                }
-                            } label: {
-                                Image(systemName: "ellipsis.circle")
-                            }
-                        }
+                    }) {
+                        Image(systemName: "doc.text.viewfinder")
+                            .font(.system(size: 20))
+                            .foregroundColor(.primary)
                     }
+                    .buttonStyle(.bordered)
                 }
             }
             .sheet(isPresented: $showSettings) {
@@ -127,31 +98,6 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingShareSheet) {
                 ShareSheet(activityItems: [viewModel.shareList()])
-            }
-            .sheet(isPresented: $showingAddItemSheet) {
-                NavigationView {
-                    Form {
-                        Section(header: Text("Artikel Details")) {
-                            TextField("Name", text: $newItemName)
-                            TextField("Menge (z.B. 500g)", text: $newItemQuantity)
-                            Picker("Kategorie", selection: $selectedCategory) {
-                                ForEach(Category.allCases, id: \.self) { category in
-                                    Text(category.rawValue).tag(category)
-                                }
-                            }
-                        }
-                    }
-                    .navigationTitle("Artikel hinzufügen")
-                    .navigationBarItems(
-                        leading: Button("Abbrechen") {
-                            showingAddItemSheet = false
-                        },
-                        trailing: Button("Hinzufügen") {
-                            addNewItem()
-                        }
-                        .disabled(newItemName.isEmpty)
-                    )
-                }
             }
             .alert("Tipp zum Scannen", isPresented: $showingCameraHint) {
                 Button("Verstanden") {
@@ -179,23 +125,6 @@ struct ContentView: View {
                 Text("Diese Aktion kann nicht rückgängig gemacht werden.")
             }
         }
-    }
-    
-    private func addNewItem() {
-        let quantity = Quantity.parse(from: newItemQuantity) ?? Quantity(amount: 0, unit: "")
-        let item = GroceryItem(
-            name: newItemName,
-            quantity: quantity,
-            category: selectedCategory,
-            isChecked: false
-        )
-        viewModel.addItem(item)
-        
-        // Reset form
-        newItemName = ""
-        newItemQuantity = ""
-        selectedCategory = .other
-        showingAddItemSheet = false
     }
 }
 
@@ -234,12 +163,6 @@ struct GroceryItemRow: View {
                             .foregroundColor(item.category.color)
                         Text(item.name)
                             .strikethrough(item.isChecked)
-                        Spacer()
-                        if let total = item.totalQuantity {
-                            Text(total.toString())
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                        }
                     }
                     if !item.quantities.isEmpty {
                         Text(item.formatQuantities())
@@ -247,17 +170,9 @@ struct GroceryItemRow: View {
                             .foregroundColor(.gray)
                     }
                 }
-            }
-        }
-        .contentShape(Rectangle())
-        .onTapGesture(count: 2) {
-            editingItemId = item.id
-        }
-        .swipeActions(edge: .trailing) {
-            Button(role: .destructive) {
-                viewModel.removeItem(at: IndexSet([viewModel.items.firstIndex(where: { $0.id == item.id })!]))
-            } label: {
-                Label("Löschen", systemImage: "trash")
+                .onTapGesture {
+                    editingItemId = item.id
+                }
             }
         }
     }

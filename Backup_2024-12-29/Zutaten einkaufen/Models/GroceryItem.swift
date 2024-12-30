@@ -25,55 +25,55 @@ enum Category: String, Codable, CaseIterable {
     }
     
     static func getSpecificIcon(for ingredient: String) -> String? {
-        let mapping: [String: String] = [
-            // Obst
-            "apfel": "🍎",
-            "äpfel": "🍎",
-            "birne": "🍐",
-            "birnen": "🍐",
-            "banane": "🍌",
-            "bananen": "🍌",
-            "orange": "🍊",
-            "orangen": "🍊",
-            "zitrone": "🍋",
-            "zitronen": "🍋",
-            "mandarine": "🍊",
-            "mandarinen": "🍊",
-            "weintraube": "🍇",
-            "weintrauben": "🍇",
-            "erdbeere": "🍓",
-            "erdbeeren": "🍓",
-            "kiwi": "🥝",
-            "kiwis": "🥝",
-            "pfirsich": "🍑",
-            "pfirsiche": "🍑",
-            "melone": "🍈",
-            "melonen": "🍈",
-            "ananas": "🍍",
+        let ingredientMap: [String: String] = [
+            // Basis-Backzutaten
+            "ei": "🥚",
+            "eier": "🥚",
+            "milch": "🥛",
+            "butter": "🧈",
+            "mehl": "🌾",
+            "zucker": "🧂",
+            "vanille": "🌺",
+            "vanillezucker": "🌺",
+            "vanilleextrakt": "🌺",
+            "vanilleschote": "🌺",
+            "backpulver": "🧂",
+            "hefe": "🧬",
             
             // Gemüse
-            "tomate": "🍅",
-            "tomaten": "🍅",
             "karotte": "🥕",
-            "karotten": "🥕",
             "möhre": "🥕",
-            "möhren": "🥕",
             "kartoffel": "🥔",
-            "kartoffeln": "🥔",
-            "zwiebel": "🧅",
-            "zwiebeln": "🧅",
-            "knoblauch": "🧄",
+            "tomate": "🍅",
             "salat": "🥬",
-            "kopfsalat": "🥬",
             "gurke": "🥒",
-            "gurken": "🥒",
+            "zwiebel": "🧅",
+            "knoblauch": "🧄",
             "paprika": "🫑",
             "brokkoli": "🥦",
-            "aubergine": "🍆",
-            "auberginen": "🍆",
+            "pilz": "🍄",
             "mais": "🌽",
-            "pilze": "🍄",
-            "champignons": "🍄",
+            
+            // Obst
+            "apfel": "🍎",
+            "birne": "🍐",
+            "orange": "🍊",
+            "zitrone": "🍋",
+            "banane": "🍌",
+            "erdbeere": "🍓",
+            "blaubeere": "🫐",
+            "traube": "🍇",
+            "wassermelone": "🍉",
+            "kiwi": "🥝",
+            "pfirsich": "🍑",
+            "avocado": "🥑",
+            
+            // Milchprodukte
+            "käse": "🧀",
+            "joghurt": "🥛",
+            "sahne": "🥛",
+            "quark": "🥛",
+            "schmand": "🥛",
             
             // Backwaren
             "brot": "🍞",
@@ -81,84 +81,77 @@ enum Category: String, Codable, CaseIterable {
             "croissant": "🥐",
             "brezel": "🥨",
             "kuchen": "🍰",
-            "torte": "🎂",
-            "keks": "🍪",
-            "kekse": "🍪",
             
-            // Milchprodukte
-            "milch": "🥛",
-            "joghurt": "🫐",
-            "käse": "🧀",
-            "butter": "🧈",
-            "sahne": "🥛",
-            "quark": "🥛",
-            
-            // Eier
-            "ei": "🥚",
-            "eier": "🥚",
-            
-            // Fleisch
+            // Fleisch & Fisch
             "fleisch": "🥩",
             "steak": "🥩",
-            "wurst": "🌭",
-            "würstchen": "🌭",
-            "schinken": "🥓",
-            "speck": "🥓",
             "hähnchen": "🍗",
-            "huhn": "🍗",
-            "chicken": "🍗",
-            
-            // Fisch & Meeresfrüchte
+            "wurst": "🌭",
+            "schinken": "🥓",
             "fisch": "🐟",
             "lachs": "🐟",
-            "thunfisch": "🐟",
-            "garnelen": "🦐",
-            "shrimps": "🦐",
+            "garnele": "🦐",
+            
+            // Grundnahrungsmittel
+            "reis": "🍚",
+            "nudel": "🍝",
+            "spaghetti": "🍝",
+            "bohne": "🫘",
+            
+            // Gewürze & Kräuter
+            "salz": "🧂",
+            "pfeffer": "🧂",
+            "chili": "🌶️",
+            "basilikum": "🌿",
+            "oregano": "🌿",
+            "rosmarin": "🌿",
+            "thymian": "🌿",
+            
+            // Öle & Fette
+            "öl": "🫗",
+            "olivenöl": "🫗",
+            "margarine": "🧈",
             
             // Getränke
             "wasser": "💧",
-            "mineralwasser": "💧",
-            "saft": "🧃",
-            "limonade": "🥤",
-            "cola": "🥤",
-            "bier": "🍺",
             "wein": "🍷",
+            "bier": "🍺",
+            "saft": "🧃",
             "kaffee": "☕️",
             "tee": "🫖",
             
-            // Snacks
-            "chips": "🥨",
+            // Snacks & Süßigkeiten
             "schokolade": "🍫",
-            "süßigkeiten": "🍬",
-            "bonbons": "🍬",
-            "nüsse": "🥜",
-            "erdnüsse": "🥜",
-            
-            // Gewürze & Basics
-            "salz": "🧂",
-            "pfeffer": "🧂",
-            "zucker": "🧂",
-            "mehl": "🌾",
-            "reis": "🍚",
-            "nudeln": "🍝",
-            "spaghetti": "🍝",
-            "öl": "🫗",
-            "olivenöl": "🫗",
+            "keks": "🍪",
+            "chips": "🥨",
+            "nuss": "🥜",
+            "erdnuss": "🥜",
+            "mandel": "🥜",
+            "popcorn": "🍿",
             
             // Saucen & Dips
-            "ketchup": "🍅",
-            "mayonnaise": "🥚",
-            "senf": "🌭",
-            
-            // Fertiggerichte
-            "pizza": "🍕",
-            "burger": "🍔",
-            "pommes": "🍟",
-            "döner": "🥙",
-            "sushi": "🍱"
+            "ketchup": "🥫",
+            "mayonnaise": "🥫",
+            "senf": "🥫",
+            "soße": "🥫",
+            "sauce": "🥫"
         ]
         
-        return mapping[ingredient.lowercased()]
+        // Prüfe verschiedene Varianten des Zutatennamen
+        let variations = [
+            ingredient,
+            ingredient.replacingOccurrences(of: "e", with: ""),  // Für Plural-Varianten
+            String(ingredient.dropLast()),  // Für Singular/Plural
+            ingredient + "n"  // Für Plural
+        ]
+        
+        for variation in variations {
+            if let icon = ingredientMap[variation] {
+                return icon
+            }
+        }
+        
+        return nil
     }
     
     var color: Color {
@@ -275,55 +268,23 @@ struct Quantity: Codable, Equatable {
     }
     
     private static func normalizeUnit(_ quantity: Quantity) -> Quantity {
-        let unit = quantity.unit.lowercased().trimmingCharacters(in: .whitespaces)
+        let unit = quantity.unit.lowercased()
         var amount = quantity.amount
         var normalizedUnit = unit
         
         switch unit {
-        // Gewicht
         case "kg":
             amount *= 1000
             normalizedUnit = "g"
-            
-        // Volumen
         case "l":
             amount *= 1000
             normalizedUnit = "ml"
-            
-        // Löffel und Tassen
-        case "el", "esslöffel", "essl":
+        case "el", "esslöffel":
             amount *= 15
             normalizedUnit = "ml"
-        case "tl", "teelöffel", "teel":
+        case "tl", "teelöffel":
             amount *= 5
             normalizedUnit = "ml"
-        case "tasse", "tassen":
-            amount *= 250
-            normalizedUnit = "ml"
-        case "becher":
-            amount *= 200
-            normalizedUnit = "ml"
-        case "glas", "gläser":
-            amount *= 200
-            normalizedUnit = "ml"
-            
-        // Kleine Mengen
-        case "prise", "prisen":
-            amount *= 0.5
-            normalizedUnit = "g"
-        case "msp", "messerspitze", "messerspitzen":
-            amount *= 0.5
-            normalizedUnit = "g"
-        case "schuss", "spritzer":
-            amount *= 5
-            normalizedUnit = "ml"
-            
-        // Stückzahlen
-        case "stk", "stück", "st":
-            normalizedUnit = "Stück"
-        case "pkg", "packung", "packungen", "pckg", "pack":
-            normalizedUnit = "Packung"
-            
         default:
             break
         }

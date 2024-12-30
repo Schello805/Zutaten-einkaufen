@@ -41,10 +41,3 @@ Wir behalten uns vor:
 • Funktionen zu ändern
 • Fehler zu beheben
 • Die Nutzungsbedingungen anzupassen
-
-**💻 Open Source**
-Diese App ist Open Source:
-• Quellcode auf GitHub verfügbar
-• Unter github.com/Schello805/Zutaten-einkaufen
-• Beiträge sind willkommen
-• MIT-Lizenz

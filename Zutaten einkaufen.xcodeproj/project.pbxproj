@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		753EAAE32D21F36500714694 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753EAAE22D21F36400714694 /* StoreKit.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		75F4ED6B2D20879A008BCD91 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		753EAAE22D21F36400714694 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		75F4ED5A2D208794008BCD91 /* Zutaten einkaufen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zutaten einkaufen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F4ED6A2D20879A008BCD91 /* Zutaten einkaufenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zutaten einkaufenTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F4ED742D20879A008BCD91 /* Zutaten einkaufenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zutaten einkaufenUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				753EAAE32D21F36500714694 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +78,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		753EAAE12D21F36400714694 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				753EAAE22D21F36400714694 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		75F4ED512D208794008BCD91 = {
 			isa = PBXGroup;
 			children = (
 				75F4ED5C2D208794008BCD91 /* Zutaten einkaufen */,
 				75F4ED6D2D20879A008BCD91 /* Zutaten einkaufenTests */,
 				75F4ED772D20879A008BCD91 /* Zutaten einkaufenUITests */,
+				753EAAE12D21F36400714694 /* Frameworks */,
 				75F4ED5B2D208794008BCD91 /* Products */,
 			);
 			sourceTree = "<group>";

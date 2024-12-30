@@ -1,0 +1,58 @@
+{
+  "identifier" : "9A8C1C15",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "biz.schellenberger.michael.Zutaten-einkaufen",
+    "_developerTeamID" : "",
+    "_lastSynchronizedDate" : 719825058.11935496
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "20C78789",
+      "localizations" : [
+        {
+          "description" : "Scanner Abonnements",
+          "displayName" : "Scanner Abos",
+          "locale" : "de"
+        }
+      ],
+      "name" : "Scanner Abos",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : true,
+          "groupNumber" : 1,
+          "internalID" : "6A7B1D34",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unbegrenzte Scans für 4 Wochen",
+              "displayName" : "Premium Scanner",
+              "locale" : "de"
+            }
+          ],
+          "productID" : "biz.schellenberger.michael.Zutaten-einkaufen.subscription.4weeks",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Scanner 4 Wochen",
+          "subscriptionGroupID" : "20C78789",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

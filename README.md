@@ -18,7 +18,7 @@ Eine intelligente iOS-App zum Scannen von Rezepten und automatischen Erstellen v
 
 1. Klonen Sie das Repository:
 ```bash
-git clone https://github.com/yourusername/zutaten-einkaufen.git
+git clone https://github.com/Schello805/zutaten-einkaufen.git
 ```
 
 2. Öffnen Sie das Projekt in Xcode:
